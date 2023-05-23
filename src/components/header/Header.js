@@ -4,6 +4,10 @@ import './CTA'
 import CTA from './CTA' //here we import the CTA component inside our header
 import me from '../../assets/-5947059739974284264_121.jpg'
 import HeaderSocial from './HeaderSocial' //import of headerSocial component
+
+
+
+
 export const Header = () => {
 return (
 <header>

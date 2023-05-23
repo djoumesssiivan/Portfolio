@@ -13,6 +13,13 @@ function APP(){
         <>
             <Header/>
             <Contact/>
+            <About/>
+            <Experience/>
+            <Footer/>
+            <Navbar/>
+            <Portfolio/>
+            <Services/>
+            <Testimonial/>   
         </>
     )
 
