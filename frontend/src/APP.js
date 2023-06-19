@@ -12,14 +12,15 @@ function APP(){
     return(
         <>
             <Header/>
-            <Contact/>
+            
             <About/>
             <Experience/>
-            
             <Navbar/>
+            
             <Portfolio/>
             <Services/>
-            <Testimonial/> 
+            <Testimonial/>
+            <Contact/> 
             <Footer/>  
         </>
     )

@@ -1,31 +1,49 @@
-const dotenv = require("dotenv").config();
-const express = require("express");
+const express = require('express');
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const app =express()
+const projectRoute = require('./routes/projectRoute');
+const serviceRoute = require('./routes/serviceRoute');
+const testimonialRoute = require('./routes/testimonialRoute');
+const experienceRoute = require('./routes/experienceRoute');
+require('dotenv').config({path: './variables/.env'});
+const cors = require("cors")
 
-//middlewares
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use(bodyParser.json())
+const app =express();
 
-//Routes
-app.get("/",(rep,res)=>{
-    res.send("home page");
+const PORT = process.env.PORT;
+const DBURL = process.env.DBURL;
+
+mongoose.connect(DBURL)
+.then(()=>{
+    app.listen(PORT, function(){
+        console.log ("listening on port",PORT)
+    })
+    console.log("Successfully connected to the Database")
+})
+.catch((error)=>{
+    console.log("Database Error", error)}
+)
+
+// middleware
+app.use(express.json());
+app.use( (req, res, next) =>{
+    console.log(req.path, req.method);
+    next();
 });
+app.use(cors({
+    "origin" : ["http://127.0.0.1:3000", "https://portfolio-djoumesssivan.vercel.app"],
+    "methods" : ["GET", "POST", "DELETE", "PATCH"]
+}));
 
-const PORT = process.env.PORT || 5000;
 
-// connect to the database and start the server
-
-mongoose
-        .connect(process.env.MONGO_URL)
-        .then(() => {
-
-            app.listen(PORT, ()=>{
-
-                console.log('server Running on port ${PORT}')
-            })
+//defining route
+app.use("/projects", projectRoute);
+app.use("/services", serviceRoute);
+app.use("/experiences", experienceRoute)
+app.use("/testimonials", testimonialRoute);
+app.use("/", (req, res)=>{
+    return (
+        res.status(200).json({
+            message: "Root URL, Please navigate to a valid Endpoint"
         })
-        .catch((err) => console.log(err));
+    )
+})
