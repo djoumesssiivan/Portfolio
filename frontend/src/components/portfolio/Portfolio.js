@@ -1,29 +1,62 @@
 import React from "react";
 import "./portfolio.css";
-import img1 from "../../assets/moi1.jpg";
-import img2 from "../../assets/moi2.jpg";
-import img3 from "../../assets/moi3.jpg";
-import img5 from "../../assets/moi5.jpg";
-import img6 from "../../assets/moi6.jpg";
-import img7 from "../../assets/moi7.jpg";
-import img8 from "../../assets/moi4.jpg";
-import img9 from "../../assets/moi3.jpg";
+import img1 from "../../assets/img1.PNG";
+import img2 from "../../assets/img2.PNG";
+import img3 from "../../assets/img3.PNG";
+import img5 from "../../assets/img5.PNG";
+import img6 from "../../assets/img1.PNG";
+import img7 from "../../assets/img5.PNG";
+import img8 from "../../assets/img2.PNG";
+import img9 from "../../assets/img3.PNG";
 import ListPortfolio from "./listPortfolio";
 
 export const Portfolio = () => {
   const portfolioContent = [
     {
       image : img1,
-  
+      github: 'https://github.com/djoumesssiivan/Portfolio/tree/master/frontend',
+      demo: '',
       id: 1,
-      title:'Project '
+      title:'Project 1'
     },
-    
- 
+    {
+      image : img2,
+      github: 'https://github.com/djoumesssiivan/Portfolio/tree/master/backend',
+      demo: '',
+      id: 2,
+      title:'Project 2'
+    },
+    {
+      image : img3,
+      vercel: 'https://djoumessiivan.vercel.app',
+      demo: '',
+      id: 4,
+      title:'Project 4'
+    },
+    {
+      image : img5,
+      render: 'https://github.com',
+      demo: '',
+      id: 5,
+      title:'Project 5'
+    },
+    {
+      image : img6,
+      github: 'https://github.com',
+      demo: '',
+      id: 6,
+      title:'Project 6'
+    },
+      {
+      image : img9,
+      github: 'https://github.com',
+      demo: 'https://dribbble.com/shots/20177733-Apres-Brand-Identity-Design',
+      id: 7,
+      title:'Project 7'
+    },
   
    
-  
-    
+   
   ]
   return (
     <section id="portfolio">
@@ -46,7 +79,7 @@ export const Portfolio = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  NONE
+                  Github
                 </a>
                 <a
                   href={content.demo}
@@ -54,7 +87,7 @@ export const Portfolio = () => {
                   target="blank"
                   rel="noreferrer"
                 >
-                  NONE
+                  Live Demo
                 </a>
               </div>
             </article>
